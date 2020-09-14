@@ -41,9 +41,9 @@ ascendingArray2(length: 6, startingFrom: 10)
 // MARK: -
 // 4. Удалить из этого массива все четные числа и все числа, которые не делятся на 3.
 var array = ascendingArray(length: 100, startingFrom: 0)
-let arrayLength = array.count
-for i in 0..<arrayLength {
-    let invertedIndex = arrayLength - 1 - i
+let arrayCount = array.count
+for i in 0..<arrayCount {
+    let invertedIndex = arrayCount - 1 - i
     if isNumberEven(array[invertedIndex]) {
         array.remove(at: invertedIndex)
     } else if isNumberDevidedByThree(array[invertedIndex]) {
@@ -51,12 +51,24 @@ for i in 0..<arrayLength {
     }
 }
 print(array)
+print("")
 
 // MARK: -
-// 5. * Написать функцию, которая добавляет в массив новое число Фибоначчи, и добавить при помощи нее 100 элементов.
-func appendFibonacciNumber(array: [Int]) -> [Int] {
+// 5. * Написать функцию, которая добавляет в массив новое число Фибоначчи, и добавить при помощи нее 80 элементов.
+func appendedFibonacciNumber(array: [Int]) -> [Int] {
+    if array.count < 2 {
+        assertionFailure("Требуется как минимум 2 элемента")
+        return []
+    }
+    
     var fibonacciArray = array
     let fibonacciNumber = array[array.count - 1] + array[array.count - 2]
     fibonacciArray.append(fibonacciNumber)
     return fibonacciArray
 }
+
+var fibonacciArray = [0, 1]
+for _ in 0..<80 {
+    fibonacciArray = appendedFibonacciNumber(array: fibonacciArray)
+}
+print(fibonacciArray)
